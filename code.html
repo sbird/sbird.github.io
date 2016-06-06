@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Code</title><link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+<div class="main centered"> 
+<h1 class="centered">Simeon Bird</h1> 
+        <div id="menu">
+        <a href="index.html">Home</a>
+        <a href="pub.html">Publications</a>
+        <a href="cv.pdf">CV</a>
+        <a href="code.html">Code</a>
+        </div>
+
+<div class="content">
+<h2>Code</h2>
+<p>The code described below can be found on my <a href="https://github.com/sbird/">github account</a>, as well as a number of other useful scripts.</p>
+<p>I made a version of the bibtex style file for MNRAS, mn2e.bst, which does not crash on papers with more than 8 authors, and also allows
+the use of hyperlinks to arxiv and ADS papers: <a href="mn2e.bst">mn2e.bst</a>. 
+The fixed style file is by <a href="https://github.com/timj/mn2e-bst">John Sleath and Tim Jenness</a>. 
+The original hyperlinks were added by <a href="http://cosmocoffee.info/viewtopic.php?t=304">Antony Lewis</a>.</p>
+<div class="paper">
+        <div class="paperfl">
+        <span class="papertitle">DLA analysis scripts</span>
+        <span class="paperlinks">[<a href="https://github.com/sbird/DLA_script/archive/master.zip">Download</a>]</span>
+        </div>
+	<div>A collection of scripts for analysing observables related to DLAs in Gadget/Arepo simulations. Uncludes routines for, eg, calculating a column density function. The basic unit of analysis is a projected density grid.</div>
+</div>
+<div class="paper">
+        <div class="paperfl">
+        <span class="papertitle">Fourier-space neutrino patches</span>
+        <span class="paperlinks">[<a href="https://github.com/sbird/fs-neutrino/archive/master.zip">Download</a>]</span>
+        </div>
+	<div>Patches to Gadget-3 which implement the Fourier-space neutrino method of <a href="http://arxiv.org/abs/1209.0461">1209.0461</a>. The code can be enabled by setting the KSPACE_NEUTRINOS_2 flag at compile-time. Will not work with the public version of Gadget-2 (yet), as it uses the built-in power spectrum estimator.</div>
+</div>
+<div class="paper">
+        <div class="paperfl">
+        <span class="papertitle">CAMB Neutrino Patches</span>
+        <span class="paperlinks">[<a href="code/camb-neutrino-patches.tar.gz">Download</a>]</span>
+        </div>
+        <div>Three patches for CAMB that allow it to reasonably accurately measure the impact of massive neutrinos on the non-linear matter power spectrum. Incorporated in the official CAMB, as of December 2011.</div>
+</div>
+<div class="paper">
+        <div class="paperfl">
+        <span class="papertitle">Matter Power Spectrum Estimator</span>
+        <span class="paperlinks">[<a href="https://github.com/downloads/sbird/GenPK/genpk.tar.gz">Download</a>]</span>
+        <span class="paperlinks">[<a href="https://github.com/sbird/GenPK">Download from github</a>]</span>
+        </div>
+        <div>Extracts the baryon and dark matter power spectra from a Gadget-II snapshot file. Written in C++, parallelized with OpenMP. Requires an FFTW3 compatible FFT library and GadgetReader</div>
+</div>
+<div class="paper">
+        <div class="paperfl">
+        <span class="papertitle">Gadget Reader Library</span>
+        <span class="paperlinks">[<a href="https://github.com/downloads/sbird/GadgetReader/GadgetReader.tar.gz">Download</a>]</span>
+        <span class="paperlinks">[<a href="https://github.com/sbird/GadgetReader">Download from github</a>]</span>
+        </div>
+        <div>A tiny C++ library for reading Gadget Format files. Has a somewhat higher-level interface than the readgadget.c that comes with Gadget itself. In particular, it is able to transparently handle multiple files in one snapshot, check the consistency of headers, swap endianness and will attempt to transparently read files in Gadget-I format, while attempting to minimise file reads. A version of this library re-written in python is incorporated into <a href="http://code.google.com/p/pynbody/">pynbody</a></div>
+</div>
+<div class="paper">
+        <div class="paperfl">
+        <span class="papertitle">DBI Simulator</span>
+        <span class="paperlinks">[<a href="code/dbi.tar.bz2">Download</a>]</span>
+        </div>
+        <div>The DBI simulator for <a href="http://arxiv.org/abs/0905.2412">this paper</a>, which calculates the trajectory of the inflaton in DBI inflation, given some initial conditions.  For this to compile, you will need to supply an ordinary DE solver. The one in Numerical Recipes works very well. </div>
+</div>
+                
+</div>
+</div>
+</body>
+</html>

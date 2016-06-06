@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+
+<h1>Version Control - Why you need it</h1>
+<p>
+Most people actually use some form of unformalised version control themselves; 
+fundamentally all they are is a series of scripts for automating the process of 
+saving backup copies of a file. </p>
+<p>So what are they useful for? A short list follows.</p>
+<ol>
+        <li>They allow you to revert to a previous version of a file, or to compare two versions, to fix mistakes and bugs, or to check that your optimisation actually makes a difference.</li>
+        <li>If you usually run your software on one machine, say a supercomputer, and do the development on another, you can easily be sure that both machines are running the same version of the code; no more mysterious bugs that appear because one of the files wasn't updated!</li>
+        <li>A VCS (version control system) will store messages with each change, so you can remind yourself later why you did it that way.</li>
+</ol>
+<p> As part of a collaboration, they are yet more useful; without a formal public version control system, 
+collaboration takes place by emailing software patches and tarballs back 
+and forth between the collaborators. This is possible, but can quickly become hard to manage. With a VCS you 
+and your collaborator can work on code without getting in each other's way; 
+the VCS will sort out conflicts. Furthermore, because you can see the changes your collaborator has made, it is extremely easy 
+to review. Sending your changes is a single shell command, and you don't have to hunt through thousands of emails..</p>
+
+<h2>Why git in particular</h2>
+<ol>
+        <li>It does not require a central server; it is possible to use it in isolation without a network connection. This 
+        means you can get significant work done on your laptop on a plane, for example.</li>
+        <li>It's fast; for one thing, diffs are local, so git diff is instantaneous, unlike svn where it requires contacting a server.</li>
+        <li>Branching, merging and conflict resolution are extremely well-handled. You can make far-reaching changes to the software, and
+        merge it back into the main branch when ready, without breaking things for your collaborator, and usually retaining any improvements they have made to the original version while you have been working.</li>
+        <li>git bisect allows you to pinpoint exactly which change introduced a given bug.</li>
+        <li>You can easily make local changes you don't want to share with collaborators, and then throw them away if they don't work out.</li>
+        <li>There are many free hosting sites for public git repositories.</li>
+        <li>It is extremely powerful; you can do essentially anything you might want to, even somewhat insane things.</li>
+</ol>
+
+<p><b>Git is the UNIX - perl - swiss army knife - Macgyver of version control</b></p>
+
+<h1>Everyday Git Usage</h1>
+<p><b>You can type "git help" or "git help command" to see short man pages.</b></p>
+<p>The long manual is at: <a href="http://www.kernel.org/pub/software/scm/git/docs/user-manual.html">Git user's manual</a> Chapters 3+4 are probably the most useful ones.</p>
+
+<h2>Installing Git</h2>
+
+<p>To install on a mac run this <a href="http://code.google.com/p/git-osx-installer/">installer</a>
+For windows you need <a href="http://code.google.com/p/msysgit/">msysgit</a>. For linux git should be in your package manager. </p>
+
+<p>(MacOSX only: You need to add "/usr/local/git/bin" to your PATH variable so that the shell knows where to find git. This means you have to modify your .bashrc file.</p>
+
+
+<h2>Retrieving a working copy of the git repository to your local machine for the first time</h2>
+
+<p>To get the git repository from the central server to your local working directory FOR THE FIRST TIME, type:<br/>
+<i>git clone ssh://YOURUSERNAME@ADDRESS/GITREPOSNAME</i></p>
+
+<p><b>You only need to do this *the first time*</b>. When you want to get new changes, type <i>git pull origin</i></p>
+
+<h2>Working with git - the basics</h2>
+
+<p>You should now have a complete copy of the files in the subdirectory GITREPOSNAME on your local machine, in the current directory in which you issued the above command. This is a complete copy; even if the server disappears your copy will retain all version information. </p>
+<p>This is the basic sequence of commands for working with git. For further help type <i>git help command</i></p>
+<ol>
+        <li>(edit file)</li>
+        <li><i>git diff</i> shows your recent edits</li>
+
+        <li><i>git add file(s)</i> schedules file(s) to be updated on next commit</li>
+
+        <li><i>git status</i> shows current status; file modified, files to be committed, files not tracked</li>
+
+        <li><i>git commit -m "COMMENT"</i> checks in the changes to the files you have just added to your LOCAL repository. No-one else can see these changes at this time!</li>
+
+        <li><i>git pull origin</i> merge in any edits other people may have made while you were editing. If you both edited the same line of the file, git will warn you of a conflict, and mark the affected lines with something like:<br/>
+        &gt;&gt;&gt;&gt;&gt;&gt;&gt; revision<br/>
+        ===========================<br/>
+        &lt;&lt;&lt;&lt;&lt;&lt;&lt;HEAD<br/>
+
+        You should edit the conflicted file until it is as you want it to be, and then run <i>git add</i> (conflicted file) and then <i>git commit</i> again.</li>
+
+        <li><i>git push</i> checks in your changes to the public repository. Once you have done this, your changes can be seen by everyone.</li>
+
+        <li><i>git reset --hard</i> throws away all changes since last commit (THIS WILL DESTROY ANY EDITS YOU HAVE MADE)</li>
+</ol>
+
+
+<h2>Working with git - some details</h2>
+
+<h3>Committing</h3>
+
+<p>Remember that to commit a change, you first have to "git add" the file. "git commit" by default commits only changes in files that have been added. So you do:</p>
+<ol>
+        <li>(edit some_file)</li>
+        <li><i>git add some_file</i></li>
+        <li><i>git commit -m "Edited some_file"</i></li>
+</ol>
+<p>Shorthand for the last two steps, if you want to commit <b>all</b> edited files, is <i>git commit -a -m "Comment"</i>.</p>
+<p>Remember that for your collaborators to see the commit, you must then do <i>git push</i></p>
+
+<h3>Branching</h3>
+
+<p>This is a semi-advanced topic; if you want to edit something in isolation, you might use a branch. 
+Branches have some subtleties, and are quite powerful. This is just an overview of the basics</p>
+
+<p>To create a branch from the checked out current revision: <i>git branch my_branch</i></p>
+
+<p>To view branches in the current repository: <i> git branch</i>. The currently checked out branch will be marked with a *.</p>
+<p>For branches in a remote repository (the one you cloned from): <i> git branch -r</i></p>
+
+<p>To start working on the current branch, you need to have it checked out. To do this (even if it is a remote branch), do:
+<i>git checkout my_branch</i>. 
+
+<p>If you created a new branch in your working copy, which is not present in the remote repository, after committing your local changes you need to use a slightly different command to pushing your changes: <i>git push origin my_branch</i>. Origin here is the default name of the repository you cloned from; you can use other names, see <i>git help remote add</i></p>
+
+<h3>Merging</h3>
+
+<p>Imagine that you created a branch from your software, but then your collaborator makes some changes. The changes are useful to you, but you don't want to abandon your work on the branch. To solve this problem, you want to merge your collaborators changes with your local branch. </p>
+<p>This is done (assuming you have your local branch checked out) with: <i>git merge master</i> (that's it!) 
+<i>master</i> refers to the main branch and should always exist; you can use any other branch name you like here</p>
+
+<p>If there are small conflicts which need to be corrected by hand, you should edit the affected files and then commit the changes locally.At any point, git status tells you detailed info about the current status of your edits.</p>
+
+<h3>Other useful commands are:</h3>
+<ol>
+<li><i>git reset --hard</i> revert to previous version, losing all changes</li>
+<li><i>git log </i> shows a log of the versions</li>
+<li><i>git diff HEAD HEAD^ </i> difference between current version and one revision earlier</li>
+<li><i>git diff HEAD HEAD^^</i> difference between current version and two revisions earlier</li>
+<li><i>git diff --cached </i> changes that have been added and will be committed if you type git commit right now.</li>
+<li><i>git checkout -- file</i> Throw away only the changes to file</li>
+<li><i>git rm</i> remove a file from git's index. Note this does not generally delete the file (for that you want plain "rm"), it just removes it from the files git knows about.</li>
+</ol>
+
+<p>To create a single large patch of all changes on your branch:</p>
+<p><i>git diff -p master branchname > my_patch.patch</i></p>
+
+
+<p>For anything more complicated, please check out the help and if you can't figure it out please ask.</p>
+</body>
+</html>

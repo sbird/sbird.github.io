@@ -1,0 +1,111 @@
+body { 
+background-color: #aabbdd;
+font-family: sans-serif
+}
+
+h1 {
+text-align: center; 
+}
+
+h2 {
+padding-top: 1em;
+}
+
+.centered { 
+margin-left: auto;
+margin-right: auto;
+}
+
+.main { 
+background-color: #FFFFFF;
+padding: 5px 20px 20px 20px;
+border: 1px solid black;
+max-width: 850px;
+min-height: 800px;
+}
+
+.papertitle {
+font-weight: bold;
+}
+
+.paperauthors {
+margin-left: 1em;
+font-style: italic;
+}
+
+.paperlinks{ 
+margin-left: 1.5em;
+}
+
+.paperpub{ 
+        margin-top: 0.5em;
+        margin-left: 1em;
+}
+
+.paper {
+width: 95%;
+margin-left: auto;
+margin-right: auto;
+padding-bottom: 10px;
+}
+
+.paperfl{ 
+margin-bottom: 0.4em; 
+}
+
+.one-line { 
+display: block; 
+}
+
+.infohead { 
+font-weight: bold;
+}
+
+.info {
+padding-bottom: 0.5em;
+}
+
+address { 
+font-style: normal; 
+margin-bottom: 0.5em
+}
+
+#me { 
+float: right; 
+width: 200px;
+border: 1px solid black;
+margin-bottom: 5px;
+}
+
+#me_div {
+float: right; 
+width: 202px;
+font-size: x-small;
+}
+ 
+#menu a:link {
+        color: blue;
+        text-decoration: none;
+}
+
+#menu a:visited {
+        text-decoration: none;
+        color: blue;
+}
+
+#menu a:active {
+        text-decoration: none; 
+        color:red;
+}
+
+#menu a:hover {
+        text-decoration: none;
+        color: #FFA500;
+}
+
+#menu {
+        word-spacing: 3em;
+        text-align: center;
+        font-size: large;
+}
+
