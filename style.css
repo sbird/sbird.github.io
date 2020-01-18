@@ -1,6 +1,8 @@
 body { 
 background-color: #aabbdd;
-font-family: sans-serif
+background-image: url("nudensity.png");
+/*font-family: sans-serif;*/
+font-family: 'News Cycle', sans-serif;
 }
 
 h1 {
@@ -17,7 +19,7 @@ margin-right: auto;
 }
 
 .main { 
-background-color: #FFFFFF;
+background-color: #FEF9C9; /*#FFFFFF;*/
 padding: 5px 20px 20px 20px;
 border: 1px solid black;
 max-width: 850px;
